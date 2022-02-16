@@ -670,6 +670,10 @@ func (c *Context) clonePackage(p *packages.Package) {
 		dst := filepath.Join(newDir, filepath.Base(f))
 		c.copyFile(f, dst)
 	}
+        for _, f := range p.IgnoredFiles {
+                dst := filepath.Join(newDir, filepath.Base(f))
+                c.copyFile(f, dst)
+        }
 
 	// TODO: do we need to look for and copy go.mod?
 }
